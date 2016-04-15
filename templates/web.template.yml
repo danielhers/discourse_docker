@@ -93,12 +93,13 @@ run:
       cd: $home
       hook: code
       cmd:
+        - git remote add daniel https://github.com/danielhers/discourse
         - git reset --hard
         - git clean -f
-        - git remote set-branches --add origin master
+        - git remote set-branches --add daniel master
         - git pull
-        - git fetch origin $version
-        - git checkout $version
+        - git fetch daniel $version
+        - git checkout -b $version daniel/$version
         - mkdir -p tmp/pids
         - mkdir -p tmp/sockets
         - touch tmp/.gitkeep
